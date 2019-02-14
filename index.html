@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<p>Click the button to display the array values after the split.</p>
+<p>Click to button to view the result.</p>
 
 <button onclick="myFunction()">Try it</button>
 
@@ -10,27 +10,50 @@
 
 <script >
 myFunction = () => {
-  var str = "cujuy";
+  var str = "cumuyrje";
   var res = new Array();
   res = str.split("");
-  var i;
   var text = "";
-  for ( i = 0; i < res.length; i++) {
-    if ((res === "j") && (res === "r")) {
-      res[i] = "j" = "r"; 
-    } else if (res[i] === "a") {
-      res[i] = "A";
-    } else if (res[i] === "i") {
-      res[i] = "I";
-    } else if (res[i] === "u") {
-      res[i] = "U";
-    } else if (res[i] === "e") {
-    res[i] = "E";
-    } else if (res[i] === "o") {
-    res[i] = "O";
-    } else {
-      res[i] = `${i}#`;
+  var filter = new Array("r","j");
+  var totalmatch = 0;
+
+  for ( var i = 0; i < res.length; i++ ) {
+    for ( var j = 0; j < filter.length; j++ ) {
+      if (res[i] == filter[j]) {
+        totalmatch ++;
+        alert(totalmatch);
+      }
     }
+    if ("aiueo".indexOf(res[i]) > 0) {
+      var letter = res[i].toUpperCase();
+      res[i] = letter;
+    } else if ( totalmatch > 0  ) {
+      switch (res[i]) {
+        case "j":
+          res[i] = "r";
+          break;
+        case "r":
+          res[i] = "j";
+          break;
+        default:
+          res[i] = `${i}#`;
+          break;
+      }
+    } else if ( totalmatch < 2 ) {
+      switch (res[i]) {
+        case "r":
+          res[i] = "r";
+          break;
+        case "j":
+          res[i] = "j";
+          break;
+        default:
+          res[i] = `${i}#`;
+          break;
+      }
+    } else {
+      res[i] = `${i}#`
+    } 
     text += res[i]
   }
   document.getElementById("demo").innerHTML = text;
