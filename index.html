@@ -14,7 +14,6 @@ myFunction = () => {
   var res = new Array();
   res = str.split("");
   var text = "";
-  var result = "";
   var filter = new Array("r","j");
   var totalmatch = 0;
 
@@ -23,44 +22,38 @@ myFunction = () => {
       if (res[i] == filter[j]) {
         totalmatch ++;
       }
-    }
-    if ("aiueo".indexOf(res[i]) > 0) {
-      var letter = res[i].toUpperCase();
-      res[i] = letter;
     }  
-    text += res[i]
   }
 
-  console.log(totalmatch)
   if ( totalmatch > 1 ) {
-     var filter = text.split("");
-     console.log(filter)
-    for ( x = 0; x < filter.length; x++ ) {
-      if (filter[x] === "r") {
-        filter[x] = "j";
-      } else if ( filter[x] === "j") {
-        filter[x] = "r";
+    for ( x = 0; x < res.length; x++ ) {
+      if ("aiueo".indexOf(res[x]) > 0) {
+        res[x] = res[x].toUpperCase();
+      } else if ( res[x] === "r") {
+        res[x] = "j";
+      } else if ( res[x] === "j") {
+        res[x] = "r";
       }else{
-        filter[x] = `${x}#`;
+        res[x] = `${x}#`;
       }
-       result += filter[x];
+        text += res[x];
     }
-  } else if ( totalmatch < 2 ) {
-     var filter = text.split("");
-     console.log(filter)
-    for ( x = 0; x < filter.length; x++ ) {
-      if (filter[x] === "r") {
-        filter[x] = "r";
-      } else if ( filter[x] === "j") {
-        filter[x] = "j";
-      }else{
-        filter[x] = `${x}#`;
+  } else if ( totalmatch < 2) {
+      for ( x = 0; x < res.length; x++) {
+        if ("aiueo".indexOf(res[x]) > 0) {
+        res[x] = res[x].toUpperCase();
+        } else if (res[x] === "r") {
+          res[x] = "r";
+        } else if (res[x] === "j") {
+          res[x] = "j";
+        } else {
+          res[x] = `${x}#`;
+        }
+          text += res[x];
       }
-       result += filter[x];
-    }
   }
-
-  document.getElementById("demo").innerHTML = result;
+  
+  document.getElementById("demo").innerHTML = text;
 }
 </script>
 
