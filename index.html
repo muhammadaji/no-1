@@ -10,10 +10,11 @@
 
 <script >
 myFunction = () => {
-  var str = "cumuyrje";
+  var str = "cumuyre";
   var res = new Array();
   res = str.split("");
   var text = "";
+  var result = "";
   var filter = new Array("r","j");
   var totalmatch = 0;
 
@@ -21,42 +22,45 @@ myFunction = () => {
     for ( var j = 0; j < filter.length; j++ ) {
       if (res[i] == filter[j]) {
         totalmatch ++;
-        alert(totalmatch);
       }
     }
     if ("aiueo".indexOf(res[i]) > 0) {
       var letter = res[i].toUpperCase();
       res[i] = letter;
-    } else if ( totalmatch > 0  ) {
-      switch (res[i]) {
-        case "j":
-          res[i] = "r";
-          break;
-        case "r":
-          res[i] = "j";
-          break;
-        default:
-          res[i] = `${i}#`;
-          break;
-      }
-    } else if ( totalmatch < 2 ) {
-      switch (res[i]) {
-        case "r":
-          res[i] = "r";
-          break;
-        case "j":
-          res[i] = "j";
-          break;
-        default:
-          res[i] = `${i}#`;
-          break;
-      }
-    } else {
-      res[i] = `${i}#`
-    } 
+    }  
     text += res[i]
   }
-  document.getElementById("demo").innerHTML = text;
+
+  console.log(totalmatch)
+  if ( totalmatch > 1 ) {
+     var filter = text.split("");
+     console.log(filter)
+    for ( x = 0; x < filter.length; x++ ) {
+      if (filter[x] === "r") {
+        filter[x] = "j";
+      } else if ( filter[x] === "j") {
+        filter[x] = "r";
+      }else{
+        filter[x] = `${x}#`;
+      }
+       result += filter[x];
+    }
+  } else if ( totalmatch < 2 ) {
+     var filter = text.split("");
+     console.log(filter)
+    for ( x = 0; x < filter.length; x++ ) {
+      if (filter[x] === "r") {
+        filter[x] = "r";
+      } else if ( filter[x] === "j") {
+        filter[x] = "j";
+      }else{
+        filter[x] = `${x}#`;
+      }
+       result += filter[x];
+    }
+  }
+
+  document.getElementById("demo").innerHTML = result;
 }
 </script>
 
