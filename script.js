@@ -41,6 +41,7 @@ main = () => {
             text += res[x];
         }
     }
+    console.log(text)
   }
 
   main();
