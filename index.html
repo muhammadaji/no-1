@@ -2,15 +2,15 @@
 <html>
 <body>
 
-<p>Click to button to view the result.</p>
+<h3>Click to button to view the result.</h3>
 
-<button onclick="myFunction()">Try it</button>
+<button onclick="myFunction()">Click Me !</button>
 
 <p id="demo"></p>
 
 <script >
 myFunction = () => {
-  var str = "cumuyre";
+  var str = "cumuyrje";
   var res = new Array();
   res = str.split("");
   var text = "";
@@ -52,7 +52,8 @@ myFunction = () => {
           text += res[x];
       }
   }
-  
+  console.log(text.split(" "))
+
   document.getElementById("demo").innerHTML = text;
 }
 </script>
