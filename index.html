@@ -1,11 +1,23 @@
-main = (word) => {
-    var str = word;
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Click to button to view the result.</h3>
+
+<input type="text" id="box">
+<button onclick="encode()">Click Me !</button>
+
+<span id="demo"></p>
+
+<script >
+  encode = () => {
+    var str = document.getElementById("box").value;
     var res = new Array();
     res = str.split("");
     var text = "";
     var filter = new Array("r","j");
     var totalmatch = 0;
-  
+
     for ( var i = 0; i < res.length; i++ ) {
       for ( var j = 0; j < filter.length; j++ ) {
         if (res[i] == filter[j]) {
@@ -13,7 +25,7 @@ main = (word) => {
         }
       }  
     }
-  
+
     if ( totalmatch > 1 ) {
       for ( x = 0; x < res.length; x++ ) {
         if ("aiueo".indexOf(res[x]) !== -1) {
@@ -29,7 +41,7 @@ main = (word) => {
       }
     } else if ( totalmatch < 2) {
         for ( x = 0; x < res.length; x++) {
-          if ("aiueo".indexOf(res[x]) !== -1) {
+          if ("aiueo".indexOf(res[x]) !== -1 ) {
           res[x] = res[x].toUpperCase();
           } else if (res[x] === "r") {
             res[x] = "r";
@@ -41,7 +53,10 @@ main = (word) => {
             text += res[x];
         }
     }
-    console.log(text)
+    
+    document.getElementById("demo").innerHTML = text;
   }
+</script>
 
-  main("cumuyrje");
+</body>
+</html>
